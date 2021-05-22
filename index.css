@@ -1,0 +1,42 @@
+
+#form-broker,
+#form-pub,
+#form-sub, 
+#broker, 
+#status, 
+#topicInput, 
+#payloadInput, 
+#subTopic, 
+#broker1-button{
+    font-size: large;
+    cursor: pointer;
+}
+
+#broker-button, 
+#publish-button, 
+#subscribe-button{
+    font-size: large;   
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card{
+    /* background-color: SkyBlue; */
+    cursor: pointer;
+    background-image: url('https://image.freepik.com/free-photo/3d-render-network-communications-background_1048-14070.jpg');
+}
+body{
+    background-image: url("https://image.freepik.com/free-photo/futuristic-smart-city-with-5g-global-network-technology_53876-98438.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    
+
+}
+.text{
+    font-weight: bold;
+    font-size: 6rem;
+}
+#incoming-div,#pub-div,#sub-div{
+    background-image: url('https://img.freepik.com/free-photo/3d-render-network-communications-science-background-with-low-poly-plexus-design_1048-13265.jpg?size=626&ext=jpg');
+}

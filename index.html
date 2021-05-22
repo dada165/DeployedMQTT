@@ -1,0 +1,140 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Web connect</title>
+
+    <!-- Added the Bootstrap CDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>   
+    <div class="container" >
+        <h1 class="text-center text-white mt-5 text">MQTT / Web Socket</h1>
+        <br>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-header" id="div-broker">
+                    <h2 class="text-center text-white">Broker Connection</h2>
+                </div>
+                <div class="card-body">
+                    <form id="form-broker">
+                        <div class="form-group">
+                            <label for="thisIsPublish" class="text-white"> Broker Address</label>
+                            <input id="broker" class="form-control bg-secondary text-white" type="text"
+                                value="wss://test.mosquitto.org:8081/mqtt">
+                        </div>
+                        <a id="broker-button" class="btn btn-primary border rounded-pill" style="width: 11rem;" onclick="connection()">Connect</a>
+                        <button id="broker-button" class="btn btn-danger border rounded-pill" style="width: 12rem;">Disconnect</button>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <label class="text-white">Status</label>
+                            <input type="text" value="Press connect button to connect to.." id="status" class=" text-white form-control bg-secondary">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="div-pub">
+                    <h2 class="text-center text-white">Publish</h2>
+                </div>
+                <div class="card-body">
+                    <form id="form-pub">
+                        <div class="form-group">
+                            <label class="text-white">Topic</label>
+                            <input id="topicInput" class="form-control bg-secondary text-white" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-white">Payload</label>
+                            <input id="payloadInput" class="form-control bg-secondary text-white" type="text">
+                        </div>
+                        <a id="publish-button" class="btn btn-primary border rounded-pill" style="width: 12rem;" onclick="publishbutton()">Publish</a>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="div-sub">
+                    <h2 class="text-center text-white">Subscribe</h2>
+                </div>
+                <div class="card-body">
+                    <form id="form-sub">
+                        <div class="form-group">
+                            <label for="thisIsPublish" class="text-white">Topic</label>
+                            <input id="subTopic" class="form-control bg-secondary text-white" type="text">
+                        </div>
+                        <a id="subscribe-button" class="btn btn-primary float-center border rounded-pill" style="width: 12rem;" onclick="subscribebutton()">Subscribe</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-4 bg-light border rounded mr-5" id = "incoming-div" >
+                <h2 class="text-center mt-2 text-white">Incoming Messages</h2>
+                <table class="table table-borderless bg-light table-striped">
+                    <tr class="bg-info">
+                        <th>Topic</th>
+                        <th>Payloads</th>
+                        <th>Timestamp</th>
+                    </tr>
+                    <tbody id="tableReciever">
+
+                    </tbody>
+
+                </table>
+            
+            </div>
+            
+            <div class="col-sm-4 bg-light border round mr-5" id = "pub-div">
+                <h2 class="text-center mt-2 text-white">Publish Messages</h2>
+                <table class="table table-borderless bg-light table-striped">
+                    <tr class="bg-info">
+                        <th>Topic</th>
+                        <th>Payloads</th>
+                        <th>Timestamp</th>
+                    </tr>
+                    <tbody id="publishTable">
+
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="col-sm-3 bg-light border rounded" id = "sub-div">
+                <h2 class="text-center mt-2 text-white">Subscribe Messages</h2>
+                <table class="table table-borderless bg-light table-striped">
+                    <tr class="bg-info">
+                        <th>Topic</th>
+                        <th>Timestamp</th>
+                    </tr>
+                    <tbody id="subscribeTable">
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./browserMqtt.js"></script>
+<script src="./index.js"></script>
+
+</html>
